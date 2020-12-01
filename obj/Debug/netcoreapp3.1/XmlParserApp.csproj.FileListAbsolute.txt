@@ -1,0 +1,13 @@
+C:\Users\Prime Laptop\source\repos\XmlParserApp\XmlParserApp\obj\Debug\netcoreapp3.1\XmlParserApp.csprojAssemblyReference.cache
+C:\Users\Prime Laptop\source\repos\XmlParserApp\XmlParserApp\obj\Debug\netcoreapp3.1\XmlParserApp.AssemblyInfoInputs.cache
+C:\Users\Prime Laptop\source\repos\XmlParserApp\XmlParserApp\obj\Debug\netcoreapp3.1\XmlParserApp.AssemblyInfo.cs
+C:\Users\Prime Laptop\source\repos\XmlParserApp\XmlParserApp\obj\Debug\netcoreapp3.1\XmlParserApp.csproj.CoreCompileInputs.cache
+C:\Users\Prime Laptop\source\repos\XmlParserApp\XmlParserApp\bin\Debug\netcoreapp3.1\XmlParserApp.exe
+C:\Users\Prime Laptop\source\repos\XmlParserApp\XmlParserApp\bin\Debug\netcoreapp3.1\XmlParserApp.deps.json
+C:\Users\Prime Laptop\source\repos\XmlParserApp\XmlParserApp\bin\Debug\netcoreapp3.1\XmlParserApp.runtimeconfig.json
+C:\Users\Prime Laptop\source\repos\XmlParserApp\XmlParserApp\bin\Debug\netcoreapp3.1\XmlParserApp.runtimeconfig.dev.json
+C:\Users\Prime Laptop\source\repos\XmlParserApp\XmlParserApp\bin\Debug\netcoreapp3.1\XmlParserApp.dll
+C:\Users\Prime Laptop\source\repos\XmlParserApp\XmlParserApp\bin\Debug\netcoreapp3.1\XmlParserApp.pdb
+C:\Users\Prime Laptop\source\repos\XmlParserApp\XmlParserApp\obj\Debug\netcoreapp3.1\XmlParserApp.dll
+C:\Users\Prime Laptop\source\repos\XmlParserApp\XmlParserApp\obj\Debug\netcoreapp3.1\XmlParserApp.pdb
+C:\Users\Prime Laptop\source\repos\XmlParserApp\XmlParserApp\obj\Debug\netcoreapp3.1\XmlParserApp.genruntimeconfig.cache
