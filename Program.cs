@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Xml;
-
+using static XmlParserApp.CompanyClasses;
 
 namespace XmlParserApp
 {
@@ -9,249 +9,348 @@ namespace XmlParserApp
     {
         static void Main(string[] args)
         {
-            Company company = new Company();
-            Address address = new Address();
-            Alias alias = new Alias();
-            Article article = new Article();
-            Business_Association business_Association = new Business_Association();
-            Individual_Association individual_Association = new Individual_Association();
-            Note note = new Note();
-            Sanction_Data sanction_Datas = new Sanction_Data();
-            Snippet snippets = new Snippet();
+            Companies companies = new Companies();
+            CompaniesCompany company = new CompaniesCompany();
+            CompaniesCompanyAddress address = new CompaniesCompanyAddress();
+            CompaniesCompanyAlias alias = new CompaniesCompanyAlias();
+            CompaniesCompanyArticle article = new CompaniesCompanyArticle();
+            CompaniesCompanyBusiness_Association business_Association = new CompaniesCompanyBusiness_Association();
+            CompaniesCompanyIndividual_Association individual_Association = new CompaniesCompanyIndividual_Association();
+            CompaniesCompanyNote note = new CompaniesCompanyNote();
+            CompaniesCompanySanction sanction_Datas = new CompaniesCompanySanction();
+            CompaniesCompanyArticleSnippetsSnippet snippets = new CompaniesCompanyArticleSnippetsSnippet();
+
 
 
             using (XmlReader reader = XmlReader.Create(@"C:\Users\Prime Laptop\Desktop\PEPsDailyFeeds\Business_UPDATE_20201117.xml"))
-
-
-            while (reader.Read())
+            {
+               while (reader.Read())
                 {
-                   
-                        reader.ReadToFollowing("Company");
-                        do
+                    if (reader.ReadToFollowing("Company"))
+                    {
+                       if(reader.ReadToFollowing("UniqueID"))
                         {
-                            reader.MoveToFirstAttribute();
-                            //Console.WriteLine($"genre: {reader.Value}");
-
-                            reader.ReadToFollowing("UniqueID");
-                            //Console.WriteLine($"UniqueID: {reader.ReadElementContentAsString()}");
-                            company.UniqueID = reader.ReadElementContentAsString();
-
-                            reader.ReadToFollowing("Business_Name");
-                            //Console.WriteLine($"Business_Name: {reader.ReadElementContentAsString()}");
-                            company.Business_Name = reader.ReadElementContentAsString();
-
-                            reader.ReadToFollowing("Description");
-                            // Console.WriteLine($"Description: {reader.ReadElementContentAsString()}");
-                            company.Description = reader.ReadElementContentAsString();
-
-                        reader.ReadToFollowing("Addresses");
-                        do
-                        {
-                            reader.ReadToFollowing("Address");
-                            do
-                            {
-                                reader.MoveToFirstAttribute();
-
-                                reader.ReadToFollowing("Address_Line_1");
-                                //Console.WriteLine($"Address_Line_1: {reader.ReadElementContentAsString()}");
-                                address.Address_Line_1 = reader.ReadElementContentAsString();
-
-                                reader.ReadToFollowing("Address_Line_2");
-                                //Console.WriteLine($"Address_Line_2: {reader.ReadElementContentAsString()}");
-                                address.Address_Line_2 = reader.ReadElementContentAsString();
-
-                                reader.ReadToFollowing("Address_Line_3");
-                                // Console.WriteLine($"Address_Line_3: {reader.ReadElementContentAsString()}");
-                                address.Address_Line_3 = reader.ReadElementContentAsString();
-
-                                reader.ReadToFollowing("Address_Line_4");
-                                address.Address_Line_4 = reader.ReadElementContentAsString();
-                                //Console.WriteLine($"Address_Line_4: {reader.ReadElementContentAsString()}");
-
-                                reader.ReadToFollowing("Town_City");
-                                address.Town_City = reader.ReadElementContentAsString();
-                                //Console.WriteLine($"Town_City: {reader.ReadElementContentAsString()}");
-
-                                reader.ReadToFollowing("County_State");
-                                address.County_State = reader.ReadElementContentAsString();
-                                //Console.WriteLine($"County_State: {reader.ReadElementContentAsString()}");
-
-                                reader.ReadToFollowing("Post_Zip_Code");
-                                address.Post_Zip_Code = reader.ReadElementContentAsString();
-                                //Console.WriteLine($"Post_Zip_Code: {reader.ReadElementContentAsString()}");
-
-                                reader.ReadToFollowing("Country");
-                                address.Country = reader.ReadElementContentAsString();
-                                //Console.WriteLine($"Country: {reader.ReadElementContentAsString()}");
-
-                                reader.ReadToFollowing("Soft_Delete");
-                                address.Soft_Delete = reader.ReadElementContentAsString();
-                                //Console.WriteLine($"Soft_Delete: {reader.ReadElementContentAsString()}");
-
-                            }
-                            while (reader.ReadToFollowing("Address"));
+                            reader.Read();
+                            company.UniqueID = reader.Value;
+                           // Console.WriteLine(company.UniqueID);
                         }
-                        while (reader.ReadToFollowing("Addresses"));
-
-
-                        reader.ReadToFollowing("Aliases");
-                        do
+                        if (reader.ReadToFollowing("Business_Name"))
                         {
-                            reader.ReadToFollowing("Alias");
-                            do
-                            {
-                                reader.ReadToFollowing("AliasID");
-                                alias.AliasID = reader.ReadElementContentAsString();
-
-                                reader.ReadToFollowing("Business_Name");
-                                alias.Business_Name = reader.ReadElementContentAsString();
-
-                                reader.ReadToFollowing("Soft_Delete");
-                                alias.Soft_Delete = reader.ReadElementContentAsString();
-
-
-                            }
-                            while (reader.ReadToFollowing("Alias"));
-
+                            reader.Read();
+                            company.Business_Name = reader.Value;
+                            //Console.WriteLine(company.Business_Name);
                         }
-                        while (reader.ReadToFollowing("Aliases"));
-
-                        reader.ReadToFollowing("Individual_Associations");
-                        do
+                        if (reader.ReadToFollowing("Description"))
                         {
-                            reader.ReadToFollowing("Individual_Association");
-                            do
-                            {
-                                reader.ReadToFollowing("Individual_ID");
-                                individual_Association.Individual_ID = reader.ReadElementContentAsString();
-
-                                reader.ReadToFollowing("Position");
-                                individual_Association.Position = reader.ReadElementContentAsString();
-
-                                reader.ReadToFollowing("Soft_Delete");
-                                individual_Association.Soft_Delete = reader.ReadElementContentAsString();
-
-                            }
-                            while (reader.ReadToFollowing("Individual_Association"));
+                            reader.Read();
+                            company.Description = reader.Value;
+                           // Console.WriteLine(company.Description);
                         }
-                        while (reader.ReadToFollowing("Individual_Associations"));
-
-
-                        reader.ReadToFollowing("Busniess_Associations");
-                        do
+                        if (reader.ReadToFollowing("Telephone"))
                         {
-                            reader.ReadToFollowing("Busniess_Association");
-                            do
-                            {
-                                reader.ReadToFollowing("Business_ID_2");
-                                business_Association.Business_ID_2 = reader.ReadElementContentAsString();
-
-                                reader.ReadToFollowing("Link_Description");
-                                business_Association.Link_Description = reader.ReadElementContentAsString();
-
-                                reader.ReadToFollowing("Soft_Delete");
-                                business_Association.Soft_Delete = reader.ReadElementContentAsString();
-
-                            }
-                            while (reader.ReadToFollowing("Busniess_Association"));
+                            reader.Read();
+                            company.Telephone = reader.Value;
+                           // Console.WriteLine(company.Telephone);
+                        }
+                        if (reader.ReadToFollowing("Fax"))
+                        {
+                            reader.Read();
+                            company.Fax = reader.Value;
+                            //Console.WriteLine(company.Fax);
+                        }
+                        if (reader.ReadToFollowing("Website"))
+                        {
+                            reader.Read();
+                            company.Website = reader.Value;
+                            //Console.WriteLine(company.Website);
+                        }
+                        if (reader.ReadToFollowing("Source"))
+                        {
+                            reader.Read();
+                            company.Source = reader.Value;
+                            //Console.WriteLine(company.Source);
+                        }
+                        if (reader.ReadToFollowing("Date_of_Capture"))
+                        {
+                            reader.Read();
+                            company.Date_of_Capture = reader.Value;
+                           // Console.WriteLine(company.Date_of_Capture);
+                        }
+                        if (reader.ReadToFollowing("Soft_Delete"))
+                        {
+                            reader.Read();
+                            company.Soft_Delete = reader.Value;
+                           // Console.WriteLine(company.Soft_Delete);
+                        }
+                        if (reader.ReadToFollowing("Date_of_Soft_Delete"))
+                        {
+                            reader.Read();
+                            company.Date_of_Soft_Delete = reader.Value;
+                           // Console.WriteLine(company.Date_of_Soft_Delete);
+                        }
+                        if (reader.ReadToFollowing("Category"))
+                        {
+                            reader.Read();
+                            company.Category = reader.Value;
+                           // Console.WriteLine(company.Category);
                         }
 
-                        while (reader.ReadToFollowing("Busniess_Associations"));
-
-                        reader.ReadToFollowing("Articles");
-                        do
+                        if (reader.ReadToFollowing("Addresses"))
                         {
-                            reader.ReadToFollowing("Article");
-                            do
+                            if (reader.ReadToFollowing("Address"))
                             {
-                                reader.ReadToFollowing("Original_URL");
-                                article.Original_URL= reader.ReadElementContentAsString();
-
-                                reader.ReadToFollowing("C6_URL");
-                                article.C6_URL = reader.ReadElementContentAsString();
-
-                                reader.ReadToFollowing("File_Name");
-                                article.File_Name = reader.ReadElementContentAsString();
-
-                                reader.ReadToFollowing("Source");
-                                article.Source= reader.ReadElementContentAsString();
-
-                                reader.ReadToFollowing("Snippets");
-                                do
+                                if (reader.ReadToFollowing("Address_Line_1"))
                                 {
-                                    reader.ReadToFollowing("Snippet");
-                                    do
-                                    {
-                                        reader.ReadToFollowing("Title");
-                                        snippets.Title = reader.ReadElementContentAsString();
-
-                                        reader.ReadToFollowing("SnippetText");
-                                        snippets.SnippetText = reader.ReadElementContentAsString();
-
-                                        reader.ReadToFollowing("Adverse_Terms");
-                                        snippets.Adverse_Terms = reader.ReadElementContentAsString();
-                                    }
-                                    while (reader.ReadToFollowing("Snippet"));
+                                    reader.Read();
+                                    address.Address_Line_1 = reader.Value;
+                                   // Console.WriteLine(address.Address_Line_1);
                                 }
-                                while (reader.ReadToFollowing("Snippets"));
-
-                                reader.ReadToFollowing("Date_of_Capture");
-                                article.Date_of_Capture = reader.ReadElementContentAsString();
-
+                                if (reader.ReadToFollowing("Address_Line_2"))
+                                {
+                                    reader.Read();
+                                    address.Address_Line_2 = reader.Value;
+                                    //Console.WriteLine(address.Address_Line_2);
+                                }
+                                if (reader.ReadToFollowing("Address_Line_3"))
+                                {
+                                    reader.Read();
+                                    address.Address_Line_3 = reader.Value;
+                                   // Console.WriteLine(address.Address_Line_3);
+                                }
+                                if (reader.ReadToFollowing("Address_Line_4"))
+                                {
+                                    reader.Read();
+                                    address.Address_Line_4 = reader.Value;
+                                    //Console.WriteLine(address.Address_Line_4);
+                                }
+                                if (reader.ReadToFollowing("Town_City"))
+                                {
+                                    reader.Read();
+                                    address.Town_City = reader.Value;
+                                   // Console.WriteLine(address.Town_City);
+                                }
+                                if (reader.ReadToFollowing("County_State"))
+                                {
+                                    reader.Read();
+                                    address.County_State = reader.Value;
+                                    //Console.WriteLine(address.County_State);
+                                }
+                                if (reader.ReadToFollowing("Post_Zip_Code"))
+                                {
+                                    reader.Read();
+                                    address.Post_Zip_Code = reader.Value;
+                                   // Console.WriteLine(address.Post_Zip_Code);
+                                }
+                                if (reader.ReadToFollowing("Post_Zip_Code"))
+                                {
+                                    reader.Read();
+                                    address.Post_Zip_Code = reader.Value;
+                                   // Console.WriteLine(address.Post_Zip_Code);
+                                }
+                                if (reader.ReadToFollowing("Country"))
+                                {
+                                    reader.Read();
+                                    address.Country = reader.Value;
+                                    //Console.WriteLine(address.Country);
+                                }
+                                if (reader.ReadToFollowing("Soft_Delete"))
+                                {
+                                    reader.Read();
+                                    address.Soft_Delete = reader.Value;
+                                    //Console.WriteLine(address.Soft_Delete);
+                                }
                             }
-                            while (reader.ReadToFollowing("Article"));
-
                         }
-                        while (reader.ReadToFollowing("Articles"));
 
-
-                        reader.ReadToFollowing("Notes");
-                        do
+                        if (reader.ReadToFollowing("Aliases"))
                         {
-                            reader.ReadToFollowing("Note");
-                            do
+                            if (reader.ReadToFollowing("Alias"))
                             {
-                                reader.ReadToFollowing("Source_of_Notes");
-                                note.Source_of_Notes = reader.ReadElementContentAsString();
-
-                                reader.ReadToFollowing("Notes");
-                                note.Notes = reader.ReadElementContentAsString();
-
-                                reader.ReadToFollowing("Soft_Delete");
-                                note.Soft_Delete = reader.ReadElementContentAsString();
-
+                                if (reader.ReadToFollowing("AliasID"))
+                                {
+                                    reader.Read();
+                                    alias.AliasID = reader.Value;
+                                   // Console.WriteLine(alias.AliasID);
+                                }
+                                if (reader.ReadToFollowing("Business_Name"))
+                                {
+                                    reader.Read();
+                                    alias.Business_Name = reader.Value;
+                                   // Console.WriteLine(alias.Business_Name);
+                                }
+                                if (reader.ReadToFollowing("Soft_Delete"))
+                                {
+                                    reader.Read();
+                                    alias.Soft_Delete = reader.Value;
+                                   // Console.WriteLine(alias.Soft_Delete);
+                                }
                             }
-                            while (reader.ReadToFollowing("Note"));
-
                         }
-                        while (reader.ReadToFollowing("Notes"));
 
-                        reader.ReadToFollowing("Sanctions_Data");
-                        do
+                        if (reader.ReadToFollowing("Individual_Association"))
                         {
-                            reader.ReadToFollowing("Sanction");
-                            do
+                            if (reader.ReadToFollowing("Individual_Association"))
                             {
-                                reader.ReadToFollowing("Sanction_Body");
-                                sanction_Datas.Sanction_Body = reader.ReadElementContentAsString();
+                                if (reader.ReadToFollowing("Individual_ID"))
+                                {
+                                    reader.Read();
+                                    individual_Association.Individual_ID = reader.Value;
+                                   // Console.WriteLine(individual_Association.Individual_ID);
+                                }
+                                if (reader.ReadToFollowing("Position"))
+                                {
+                                    reader.Read();
+                                    individual_Association.Position = reader.Value;
+                                   // Console.WriteLine(individual_Association.Position);
+                                }
+                                if (reader.ReadToFollowing("Soft_Delete"))
+                                {
+                                    reader.Read();
+                                    individual_Association.Soft_Delete = reader.Value;
+                                   // Console.WriteLine(individual_Association.Soft_Delete);
+                                }
 
-                                reader.ReadToFollowing("Sanction_Is_Current");
-                                sanction_Datas.Sanction_Is_Current = reader.ReadElementContentAsString();
 
                             }
-                            while (reader.ReadToFollowing("Sanction"));
                         }
-                        while (reader.ReadToFollowing("Sanctions_Data"));
+
+                        if (reader.ReadToFollowing("Business_Associations"))
+                        {
+                            if (reader.ReadToFollowing("Business_Association"))
+                            {
+                                if (reader.ReadToFollowing("Business_ID_2"))
+                                {
+                                    reader.Read();
+                                   business_Association.Business_ID_2 = reader.Value;
+                                    //Console.WriteLine(business_Association.Business_ID_2);
+                                }
+                                if (reader.ReadToFollowing("Link_Description"))
+                                {
+                                    reader.Read();
+                                    business_Association.Link_Description = reader.Value;
+                                   // Console.WriteLine(business_Association.Link_Description);
+                                }
+                                if (reader.ReadToFollowing("Soft_Delete"))
+                                {
+                                    reader.Read();
+                                    business_Association.Soft_Delete = reader.Value;
+                                   // Console.WriteLine(business_Association.Soft_Delete);
+                                }
+                            }
+                        }
+
+                        if (reader.ReadToFollowing("Articles"))
+                        {
+                            if (reader.ReadToFollowing("Article"))
+                            {
+                                if (reader.ReadToFollowing("Original_URL"))
+                                {
+                                    reader.Read();
+                                    article.Original_URL = reader.Value;
+                                    //Console.WriteLine(article.Original_URL);
+                                }
+                                if (reader.ReadToFollowing("C6_URL"))
+                                {
+                                    reader.Read();
+                                    article.C6_URL = reader.Value;
+                                    //Console.WriteLine(article.C6_URL);
+                                }
+                                if (reader.ReadToFollowing("File_Name"))
+                                {
+                                    reader.Read();
+                                    article.File_Name = reader.Value;
+                                   // Console.WriteLine(article.File_Name);
+                                }
+                                if (reader.ReadToFollowing("Source"))
+                                {
+                                    reader.Read();
+                                    article.Source = reader.Value;
+                                   // Console.WriteLine(article.Source);
+                                }
+                                if (reader.ReadToFollowing("Snippets"))
+                                {
+                                    if (reader.ReadToFollowing("Snippet"))
+                                    {
+                                        if (reader.ReadToFollowing("Title"))
+                                        {
+                                            reader.Read();
+                                            snippets.Title = reader.Value;
+                                            //Console.WriteLine(snippets.Title);
+                                        }
+                                        if (reader.ReadToFollowing("SnippetText"))
+                                        {
+                                            reader.Read();
+                                            snippets.SnippetText = reader.Value;
+                                            //Console.WriteLine(snippets.SnippetText);
+                                        }
+                                        if (reader.ReadToFollowing("Adverse_Terms"))
+                                        {
+                                            reader.Read();
+                                            snippets.Adverse_Terms = reader.Value;
+                                            //Console.WriteLine(snippets.Adverse_Terms);
+                                        }
+                                    }
+                                }
+                               
+                                if (reader.ReadToFollowing("Date_of_Capture"))
+                                {
+                                    reader.Read();
+                                    article.Date_of_Capture = reader.Value;
+                                   // Console.WriteLine(article.Date_of_Capture);
+                                }
 
 
-                    } while (reader.ReadToFollowing("Company"));
-                    
-                    
+                            }
+                        }
 
-                        
-                    
-                   
+                        if (reader.ReadToFollowing("Notes"))
+                        {
+                            if (reader.ReadToFollowing("Note"))
+                            {
+                                if (reader.ReadToFollowing("Source_of_Notes"))
+                                {
+                                    reader.Read();
+                                    note.Source_of_Notes = reader.Value;
+                                   // Console.WriteLine(note.Source_of_Notes);
+                                }
+                                if (reader.ReadToFollowing("Notes"))
+                                {
+                                    reader.Read();
+                                    note.Notes = reader.Value;
+                                  //  Console.WriteLine(note.Notes);
+                                }
+                                if (reader.ReadToFollowing("Soft_Delete"))
+                                {
+                                    reader.Read();
+                                    note.Soft_Delete = reader.Value;
+                                  //  Console.WriteLine(note.Soft_Delete);
+                                }
+                            }
+                        }
+
+                        if (reader.ReadToFollowing("Sanctions_Data"))
+                        {
+                            if (reader.ReadToFollowing("Sanction"))
+                            {
+                                if (reader.ReadToFollowing("Sanction_Body"))
+                                {
+                                    reader.Read();
+                                    sanction_Datas.Sanction_Body = reader.Value;
+                                  //  Console.WriteLine(sanction_Datas.Sanction_Body);
+                                }
+                                if (reader.ReadToFollowing("Sanction_Is_Current"))
+                                {
+                                    reader.Read();
+                                    sanction_Datas.Sanction_Is_Current = reader.Value;
+                                    //Console.WriteLine(sanction_Datas.Sanction_Is_Current);
+                                }
+                            }
+                        }
+
+                        Console.WriteLine(company.UniqueID);
+                    }
                 }
+            }
         }
     }
 }
