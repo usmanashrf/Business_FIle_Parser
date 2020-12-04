@@ -10,11 +10,14 @@ namespace XmlParserApp
         static void Main(string[] args)
         {
 
-            string filepath = @"C:\Users\Prime Laptop\Desktop\Business_UPDATE_20201117.xml";
+            //string BusinessFilePath = @"C:\Users\Prime Laptop\Desktop\Business_UPDATE_20201117.xml";
+            string IndividualFilePath = @"C:\Users\Prime Laptop\Desktop\PEPsDailyFeeds\Individual_UPDATE_20201117.xml";
 
-            Parser parser = new Parser();
-            parser.ParserFile(filepath);
 
+            BusinessParser businessParser = new BusinessParser();
+            // businessParser.BusinessFileParser(BusinessFilePath);
+            IndividualParser individualParser = new IndividualParser();
+            individualParser.IndividualFileParser(IndividualFilePath);
         }
    
     

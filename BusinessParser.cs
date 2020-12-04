@@ -6,9 +6,9 @@ using static XmlParserApp.CompanyClasses;
 
 namespace XmlParserApp
 {
-   public class Parser
+   public class BusinessParser
     {
-        public void ParserFile(string FilePath)
+        public void BusinessFileParser(string FilePath)
         {
             Companies companies = new Companies();
             CompaniesCompany company = new CompaniesCompany();
